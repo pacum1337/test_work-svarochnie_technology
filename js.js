@@ -34,8 +34,7 @@ function dragElement(elem) {
             old_el.innerHTML = second_content
             old_el.id = second_id
             old_el = ''
-        }
-        else if (renamed){
+        } else if (renamed) {
             old_el = ''
             mouseDown = false
             renamed = false
@@ -57,19 +56,19 @@ async function nameEdit(elem) {
         name: prompt('Введите новое имя товара'),
         id: elem.parentNode.parentNode.id
     }
-    if (data.name !== ''){
+    if (data.name !== '' && data.name !== null) {
         elem.innerText = data.name
-    var response = await fetch('http://test', {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-    if (response.status === 200) {
-        // success
-    } else {
-        // error
-    }
+        var response = await fetch('http://test', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        if (response.status === 200) {
+            // success
+        } else {
+            // error
+        }
     }
 }
